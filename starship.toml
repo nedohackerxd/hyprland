@@ -1,0 +1,54 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_status\
+$c\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+$python\
+$docker_context\
+$line_break\
+$character"""
+
+palette = "catppuccin_mocha"
+
+[directory]
+style = "bold blue"
+format = "[$path]($style) "
+truncation_length = 3
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = " "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+[git_status]
+style = "bold red"
+format = "([\\[$all_status$ahead_behind\\]]($style) )"
+
+[python]
+symbol = " "
+style = "bold yellow"
+format = "via [$symbol$version]($style) "
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[palettes.catppuccin_mocha]
+blue = "#89b4fa"
+green = "#a6e3a1"
+purple = "#cba6f7"
+red = "#f38ba8"
+yellow = "#f9e2af"

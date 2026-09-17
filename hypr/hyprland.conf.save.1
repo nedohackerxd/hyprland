@@ -1,0 +1,113 @@
+# --- Мониторы ---
+# Автоматическое определение, если нужно, пропишите конкретно: monitor=DP-1,2560x1440@144,0x0,1
+monitor=eDP-1,2880x1800@120,auto,auto
+
+# --- Автозапуск ---
+exec-once = waybar
+exec-once = swww-daemon
+exec-once = hypridle
+exec-once = wl-paste --type text --watch cliphist store
+exec-once = swaync
+exec-once = /usr/lib/hyprpolkitagent/hyprpolkitagent
+
+
+# --- Переменные окружения (для Wayland) ---
+env = XCURSOR_SIZE,24
+env = QT_QPA_PLATFORM,wayland
+env = QT_QPA_PLATFORMTHEME,qt6ct
+
+# --- Настройки ввода и общего вида ---
+input {
+    kb_layout = us,ru
+    kb_options = grp:alt_shift_toggle
+    follow_mouse = 1
+    sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
+}
+
+general {
+    gaps_in = 5
+    gaps_out = 10
+    border_size = 2
+    col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
+    col.inactive_border = rgba(595959aa)
+    layout = dwindle
+}
+
+decoration {
+    rounding = 8
+    blur {
+        enabled = true
+        size = 3
+        passes = 1
+	vibrancy = 0.1
+    }
+}
+
+animations {
+    enabled = yes
+    bezier = myBezier, 0.05, 0.9, 0.1, 1.05
+    bezier = softFade, 0.11, 0, 0.5, 0
+    animation = windows, 1, 7, myBezier
+    animation = border, 1, 10, default
+    animation = fade, 1, 7, default
+    animation = workspaces, 1, 6, myBezier, slidefade
+}
+
+# --- Привязки клавиш (Keybinds) ---
+$mainMod = SUPER
+
+bind = $mainMod, Q, exec, kitty
+bind = $mainMod, W, exec, ~/.config/hypr/scripts/set_wallpaper.sh
+bind = $mainMod, C, killactive, 
+bind = $mainMod, M, exit, 
+bind = $mainMod, E, exec, thunar
+bind = $mainMod, R, exec, rofi -show drun
+bind = $mainMod, N, exec, swaync-client -t -sw
+bind = $mainMod, F, fullscreen
+bind = $mainMod, up, exec, ddcutil set 10 + 10
+bind = $mainMod, down, exec, ddcutil set 10 - 10
+
+# Управление окнами
+bind = $mainMod SHIFT, left, movefocus, l
+bind = $mainMod SHIFT, right, movefocus, r
+bind = $mainMod SHIFT, up, movefocus, u
+bind = $mainMod SHIFT, down, movefocus, d
+
+# Скриншоты (grim + slurp)
+bind = , Print, exec, grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +'%Y%m%d_%H%M%S').png
+
+bind = $mainMod, Escape, exec, wlogout
+bind = $mainMod SHIFT, Backspace, exec, hyprctl clients -j | jq -r '.[].address' | xargs -I {} hyprctl dispatch closewindow address:{} | hyprctl dispatch workspace 1
+bind = $mainMod, left, exec, pamixer -d 1
+bind = $mainMod, right, exec, pamixer -i 1
+
+# Переключение рабочих столов
+bind = $mainMod, 1, workspace, 1
+bind = $mainMod, 2, workspace, 2
+bind = $mainMod, 3, workspace, 3
+bind = $mainMod, 4, workspace, 4
+bind = $mainMod, 5, workspace, 5
+bind = $mainMod, 6, workspace, 6
+bind = $mainMod, 7, workspace, 7
+bind = $mainMod, 8, workspace, 8
+bind = $mainMod, 9, workspace, 9
+bind = $mainMod SHIFT, 1, movetoworkspace, 1
+bind = $mainMod SHIFT, 2, movetoworkspace, 2
+bind = $mainMod SHIFT, 3, movetoworkspace, 3
+bind = $mainMod SHIFT, 4, movetoworkspace, 4
+bind = $mainMod SHIFT, 5, movetoworkspace, 5
+bind = $mainMod SHIFT, 6, movetoworkspace, 6
+bind = $mainMod SHIFT, 7, movetoworkspace, 7
+bind = $mainMod SHIFT, 8, movetoworkspace, 8
+bind = $mainMod SHIFT, 9, movetoworkspace, 9
+# ... (можно добавить до 9)
+
+# Громкость
+bindel = ,XF86AudioRaiseVolume, exec, pamixer -i 1
+bindel = ,XF86AudioLowerVolume, exec, pamixer -d 1
+bindel = ,XF86AudioMute, exec, pamixer -t
+
+render {
+    direct_scanout = 2          # auto for games
+    # non_shader_cm = 0         # try if needed
+}

@@ -1,0 +1,40 @@
+* `libdisplay-info`
+* `hyprland`
+* `hyprlock`
+* `hypridle`
+* `hyprpolkitagent`
+* `xdg-desktop-portal-hyprland`
+* `edid-decode`
+* `waybar`
+* `rofi-wayland`
+* `Thunar`
+* `thunar-volman`
+* `tumbler`
+* `gvfs`
+* `gvfs-mtp`
+* `fontawesome-fonts-all`
+* `google-noto-sans-fonts`
+* `google-noto-emoji-fonts`
+* `dejavu-sans-fonts`
+* `google-roboto-fonts`
+* `nerd-fonts`
+* `source-foundry-hack-fonts`
+* `mpvpaper`
+* `power-profiles-daemon`
+* `bluez`
+* `blueman`
+* `pipewire`
+* `wireplumber`
+* `pipewire-pulseaudio`
+* `alsa-lib`
+xed
+pamixer
+wlogout
+zsh 
+zsh-autosuggestions 
+zsh-syntax-highlighting 
+eza 
+bat 
+zoxide 
+fastfetch 
+fzf

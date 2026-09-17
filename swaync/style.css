@@ -1,0 +1,43 @@
+/* Основной фон и прозрачность */
+.control-center {
+    background: rgba(26, 27, 38, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+}
+
+/* Сами уведомления */
+.notification {
+    background: rgba(40, 41, 54, 0.8);
+    border-radius: 8px;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Текст уведомлений */
+.notification-title {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.notification-content {
+    color: #dcdcdc;
+}
+
+/* Кнопка "Очистить всё" */
+.clear-button {
+    background: #89b4fa;
+    color: #11111b;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+.clear-button:hover {
+    background: #74c7ec;
+}
+
+/* Виджеты (если вы добавите кнопки управления плеером и т.д.) */
+.widget-label {
+    color: #cdd6f4;
+}
